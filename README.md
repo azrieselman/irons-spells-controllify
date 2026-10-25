@@ -53,6 +53,12 @@ Design notes: see [`docs/compat-plan.md`](https://github.com/azrieselman/irons-s
 ./gradlew build
 ```
 
+If `gradle/wrapper/gradle-wrapper.jar` is missing after clone, regenerate it with a local Gradle install:
+
+```bash
+gradle wrapper --gradle-version 8.14.2
+```
+
 Output: `build/libs/irons_spells_controllify-<version>.jar`
 
 ## Project layout
