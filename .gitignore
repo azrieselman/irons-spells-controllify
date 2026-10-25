@@ -1,0 +1,32 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+runs
+run-data
+
+repo
+
+# Local reference jars (do not commit Controlify/ISS binaries)
+libs/*
+!libs/.gitkeep
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
