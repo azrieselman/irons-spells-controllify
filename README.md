@@ -15,7 +15,7 @@ This mod:
 1. **Mixin bridge** — after Controlify’s `controlify$setPressed`, calls `setDown` so ISS `consume()` / hold detection work like keyboard.
 2. **ISS safety mixin** — if emulation still skips `setDown`, syncs ISS rising-edge flags from `isDown()` before `consume()`.
 3. **Optional Controlify bindings** — when both mods are present, registers explicit `keyEmulation` bindings for ISS keymaps (SPI entrypoint; reflective so ISS can stay optional).
-4. **Spell-wheel stick aim** — while the wheel is open in controller mode, Controlify `RADIAL_AXIS_*` (default: right stick) places the free cursor on a ring so ISS’s angle math highlights sectors; look input is suppressed for that stick while the wheel is open.
+4. **Spell-wheel stick aim** — while the wheel is open in controller mode, **raw right-stick** axes (left stick fallback) place the free cursor on a ring so ISS’s angle math highlights sectors; look is suppressed while the wheel is open. (Controlify’s `RADIAL_AXIS_*` binds only work inside Controlify’s own radial screen, so they are not used here.)
 
 ## Install
 
@@ -68,9 +68,10 @@ Single NeoForge module for now, with package boundaries ready for multi-loader:
 
 ## Spell wheel UX notes
 
-- Aim with Controlify’s **Radial Axis** binds (defaults = right stick). Rebind under Controlify settings if you prefer the left stick.
-- Camera look is paused while the spell wheel overlay is open (same stick is look by default).
+- Open the wheel with your bound key (e.g. D-pad left), then aim with the **right stick** (or left stick if right is idle).
+- Camera look is paused while the spell wheel overlay is open.
 - Releasing the stick keeps the last highlighted sector; release the wheel hold/toggle bind to confirm (ISS behavior).
+- Fixed in **1.0.2**: earlier builds read Controlify Radial Axis binds, which are inactive outside Controlify’s own radial menu — stick aim appeared broken.
 
 ## Remaining gaps
 
