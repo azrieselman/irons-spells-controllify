@@ -30,7 +30,17 @@ public final class SafeControlifyEntrypoint implements ControlifyEntrypoint {
 
     @Override
     public void onControlifyInit(InitContext ctx) {
-        // no-op
+        if (!ModList.get().isLoaded("irons_spellbooks")) {
+            return;
+        }
+        try {
+            Class<?> bridge = Class.forName(
+                    "dev.azrieselman.irons_spells_controllify.controlify.SpellWheelStickBridge");
+            bridge.getMethod("register").invoke(null);
+        } catch (ReflectiveOperationException e) {
+            IronsSpellsControllifyMod.LOGGER.warn(
+                    "Could not register ISS spell-wheel stick bridge", e);
+        }
     }
 
     @Override
